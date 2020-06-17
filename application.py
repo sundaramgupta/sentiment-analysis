@@ -1,4 +1,4 @@
-from flask import Flask, abort, request
+from flask import Flask, abort, request, jsonify, make_response
 from flair.models import TextClassifier
 from flair.data import Sentence
 from flask import render_template
@@ -26,6 +26,7 @@ def sentimentAnalysis():
   	label = sentence.labels[0]
   	labscore = (label.score)*100
   	response = {'result': label.value, 'score': "%.2f" % labscore}
-  	return render_template('index.html', query=inputQuery, output=response)
+
+  	return jsonify(response)
   else:
     return render_template('index.html')
