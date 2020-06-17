@@ -1,4 +1,4 @@
-from flask import Flask, abort, request, jsonify, make_response
+from flask import Flask, abort, request, jsonify
 from flair.models import TextClassifier
 from flair.data import Sentence
 from flask import render_template
