@@ -7,10 +7,20 @@ app = Flask(__name__)
 
 @app.route("/", methods=['POST', 'GET'])
 def sentimentAnalysis():
+
+  # if the document is submitted
   if request.method=='POST':
+
+    #this pre-fitted model is based on IMDB dataset
   	classifier = TextClassifier.load('en-sentiment')
+
+    #variable to store the input query ('document') by the user 
   	inputQuery = request.form['query']
+
+    #Sentence is a list of tokens, here, the input 
   	sentence = Sentence(inputQuery)
+
+    #calling the .predict function on the sentence 
   	classifier.predict(sentence)
   	print('Sentiment: ', sentence.labels)
   	label = sentence.labels[0]
