@@ -32,8 +32,8 @@ def sentimentAnalysis():
 
       label = sentence.labels[0]
       labscore += ((label.score)*100)
-      labscore = labscore/len(req_data)
-    response = {'result': label.value, 'score': n }
+      labscore = labscore/n
+    response = {'result': label.value, 'score': "%.2f" % labscore }
     return jsonify(response)
   else:
     return render_template('index.html')
