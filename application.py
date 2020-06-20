@@ -1,4 +1,4 @@
-from flask import Flask, abort, request, jsonify
+from flask import Flask, abort, request, jsonify, json
 from flair.models import TextClassifier
 from flair.data import Sentence
 from flask import render_template
@@ -30,3 +30,12 @@ def sentimentAnalysis():
   	return jsonify(response)
   else:
     return render_template('index.html')
+
+@app.route("/json", methods=['POST'])
+def json():
+  
+
+  
+  req_data = request.get_json(force=True)
+  a = req_data['examples'][2]
+  return a
