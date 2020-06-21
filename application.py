@@ -6,7 +6,7 @@ from flask import render_template
 app = Flask(__name__)
 
 
-@app.route("/", methods=['POST', 'GET'])
+@app.route("/", methods=['POST'])
 def sentimentAnalysis():
   req_data = request.get_json(force=True)
   messages = req_data['messages']
